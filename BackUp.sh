@@ -1,37 +1,54 @@
  #!/bin/bash
  ###
  # Script for do backup a specific directory
- # To run the script we need 2 parameters - First one is where te log file
- # eill be and the second is what directory will be backed up.
+ # To run the script we need 2 parameters - First one the source path
+ # and the second one the destination path.
  ###
 
  #Sanity check
 if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Error in one parameter."
-    echo "Reminder that all requiered files will be copied to /home/\$USER/work/work.backup."
-    echo "USAGE: ./Scriptname.sh LOGFILE  DIRECTORY-TO-BACKUP"
+    echo "Reminder that all requiered files will be copied to /home/$USER/$2"
+    echo "Usage: $0 /path/to/source /path/destination/"
+
     exit 1;
 fi
 
-MyLog=$1
-Backup_from=$2
+#Get the source path and make a time stamp , then get the destination path and put the info of the source
+input=$1
+backupdate=$(date +"%d%m%Y")
+foldername=$(basename "$1")
+inputpath=$(dirname "$1")
+outpath="${2}"
+output="${2}${foldername}_${backupdate}"
 
 function ctrlc {
-    rm -rf /home/$USER/work/work_backup
-    rm -f $MYLOG
-    echo "Ctrl + C"
-    exit 1;
+	rm -rf $inputpath
+	rm -f $output
+	echo "Function Ctrl+C"
+	exit 1
 }
 
-trap ctrlc SIGINT ##Trows ctrlc Function
+trap ctrlc SIGINT
 
-    echo "Timestamp before work is done $(date + %D +%T")" >> $MyLog
-    echo "Creating Backup directory" >> $MyLog
-    if ! (mkdir /home/$USER/work/work_backup 2> /dev/null)
-    then
-        echo "The directory alredy exist." >> $MyLog
-    fi
-    echo "Copying Files" >> $MyLog
-    cp -v $Backup_from/* /home/$USER/work_backup/ >> $MyLog
-    echo "Copying files Sucsefully" >> $MyLog
-    echo "Timestamp after work done $(date + %D %T")" >> $MyLog
+## x while increace if you run the script whit the same directories and change the name
+case ${foldername} in
+*.tar.bz2)
+[ "${inputpath}" = "" ] && inputpath="."i
+bzip2 -dck "${inputpath}"/"${foldername}" | tar -C "${outpath}" -x
+;;
+
+*)
+counter=0
+while [ -f "${output}.${counter}.tar.bz2" ]
+do
+counter=$(expr $counter + 1)
+done
+
+output="${output}.${counter}"
+
+# run tar and bzip2 command to make backup
+tar -C "${inputpath}" -c "$foldername"|bzip2 -cz >"${output}.tar.bz2"
+chmod -x "${output}.tar.bz2"
+;;
+esac
