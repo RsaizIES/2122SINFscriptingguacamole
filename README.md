@@ -1,4 +1,10 @@
 # 2122SINFscriptingguacamole
 Scripts activities and examples
 
-RubenSaiz
+Rubén Saiz
+
+Juan Sanahuja 
+
+Javier Kandichy
+
+Jorge Sánchez
