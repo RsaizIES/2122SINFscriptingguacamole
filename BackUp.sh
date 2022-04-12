@@ -4,23 +4,26 @@
  # To run the script we need 2 parameters - First one the source path
  # and the second one the destination path.
  ###
-
+echo "Copi"
+read C
+echo "Where"
+read P
  #Sanity check
-if [ -z "$1" ] || [ -z "$2" ]; then
+if [ -z "$C" ] || [ -z "$P" ]; then
     echo "Error in one parameter."
-    echo "Reminder that all requiered files will be copied to /home/$USER/$2"
+    echo "Reminder that all requiered files will be copied to /home/$USER/$P"
     echo "Usage: $0 /path/to/source /path/destination/"
 
     exit 1;
 fi
 
 #Get the source path and make a time stamp , then get the destination path and put the info of the source
-input=$1
+input=$C
 backupdate=$(date +"%d%m%Y")
-foldername=$(basename "$1")
-inputpath=$(dirname "$1")
-outpath="${2}"
-output="${2}${foldername}_${backupdate}"
+foldername=$(basename "$C")
+inputpath=$(dirname "$C")
+outpath="${P}"
+output="${P}${foldername}_${backupdate}"
 
 function ctrlc {
 	rm -rf $inputpath
