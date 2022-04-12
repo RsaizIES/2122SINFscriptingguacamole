@@ -10,7 +10,7 @@ main_menu
 read Action
 case $Action in
   1 )
-
+    antivirus
     ;;
   2 )
     checkfiles
