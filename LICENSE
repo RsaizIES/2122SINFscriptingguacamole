@@ -672,3 +672,38 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+Timestamp before work is done 04/08/22 10:05:06
+Creating backup directory
+Directory already existed.
+Copying Files
+'/home/javgar/a.sh' -> '/home/javgar/Nueva/a.sh'
+Finished Copying Files
+Timestamp after work is done 04/08/22 10:05:06
+Timestamp before work is done 04/08/22 10:05:21
+Creating backup directory
+Directory already existed.
+Copying Files
+'/home/javgar/a.sh' -> '/home/javgar/Nueva/a.sh'
+Finished Copying Files
+Timestamp after work is done 04/08/22 10:05:21
+Timestamp before work is done 04/08/22 10:05:30
+Creating backup directory
+Directory already existed.
+Copying Files
+'/home/javgar/a.sh' -> '/home/javgar/Nueva/a.sh'
+Finished Copying Files
+Timestamp after work is done 04/08/22 10:05:30
+Timestamp before work is done 04/08/22 10:05:49
+Creating backup directory
+Directory already existed.
+Copying Files
+'/home/javgar/a.sh' -> '/home/javgar/Nueva/a.sh'
+Finished Copying Files
+Timestamp after work is done 04/08/22 10:05:50
+Timestamp before work is done 04/08/22 10:06:36
+Creating backup directory
+Directory already existed.
+Copying Files
+'/home/javgar//a.sh' -> '/home/javgar//Nueva/a.sh'
+Finished Copying Files
+Timestamp after work is done 04/08/22 10:06:36
