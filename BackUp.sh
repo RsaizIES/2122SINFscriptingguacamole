@@ -4,9 +4,9 @@
  # To run the script we need 2 parameters - First one the source path
  # and the second one the destination path.
  ###
-echo "Copi"
+echo "What do you want copy"
 read C
-echo "Where"
+echo "Where do you want past it (whit ""/"" at the end)"
 read P
  #Sanity check
 if [ -z "$C" ] || [ -z "$P" ]; then
@@ -17,10 +17,21 @@ if [ -z "$C" ] || [ -z "$P" ]; then
     exit 1;
 fi
 
+if [ ! -d "$P" ]; then
+    echo "The path $P isn't a Folder"
+    echo "Try to put a valid parameter"
+    exit 1;
+fi
 #Get the source path and make a time stamp , then get the destination path and put the info of the source
 input=$C
 backupdate=$(date +"%d%m%Y")
 foldername=$(basename "$C")
+
+if [ ! -f $foldername ] || [ ! -d $foldername ];then
+    echo "Invalid document"
+    exit 1
+    fi
+
 inputpath=$(dirname "$C")
 outpath="${P}"
 output="${P}${foldername}_${backupdate}"
